@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <peexl_extensions module="productdesigner" translate="label">
+            <label>Peexl Extensions</label>
+            <sort_order>100</sort_order>
+        </peexl_extensions>
+    </tabs>
+    <sections>
+        <productdesigner module="productdesigner" translate="label">
+            <label>Product Designer</label>
+            <sort_order>200</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <tab>peexl_extensions</tab>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <key translate="label tooltip comment">
+                            <label>Key</label>
+                            <sort_order>10</sort_order> 
+                            <show_in_default>1</show_in_default>
+                            <frontend_type>text</frontend_type>
+                        </key>                    
+                    </fields>
+                </general>
+            </groups>
+        </productdesigner>
+    </sections>
+</config>

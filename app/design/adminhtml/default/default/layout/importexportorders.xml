@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<layout>
+    <importexportorders_adminhtml_importexport_export>
+        <reference name="content">
+            <block type="adminhtml/template" template="importexportorders/export/before.phtml" name="import.form.before"
+                   alias="form_before"/>
+            <block type="importexportorders/adminhtml_export_edit" name="export.form.container"/>
+            <block type="importexportorders/adminhtml_sales_order"
+                   name="importexportorders.importexport.exportorders.grid"/>
+
+            <block type="adminhtml/template" template="importexportorders/export/after.phtml" name="import.form.after"
+                   alias="form_after"/>
+        </reference>
+    </importexportorders_adminhtml_importexport_export>
+
+    <importexportorders_adminhtml_importexport_import>
+        <reference name="content">
+            <block type="importexportorders/adminhtml_import_edit" name="import.form.container"/>
+        </reference>
+    </importexportorders_adminhtml_importexport_import>
+</layout>

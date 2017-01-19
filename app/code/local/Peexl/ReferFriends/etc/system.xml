@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs> 
+        <peexl translate="label" >
+              <label>Peexl</label>
+              <sort_order>100</sort_order>
+        </peexl> 
+    </tabs>    
+    <sections>
+        <peexl translate="label" >
+            <label>Refer Friends Options</label>
+            <tab>peexl</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <peexl_rf_registration_group translate="label" >
+                    <label>Registration Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>                        
+                        <peexl_rf_registartion translate="label">
+                            <label>Give bonus for referral registration: </label>
+                            <!--<comment>Source model provider Magento's default Yes/No values</comment>-->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_rf_registartion>
+                        <peexl_rf_bonusvalue translate="label">
+                            <label>Bonus amount: </label>
+                            <!--<comment>Source model provider Magento's default Yes/No values</comment>-->
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>                            
+                        </peexl_rf_bonusvalue>
+                    </fields>
+                </peexl_rf_registration_group>
+                <peexl_rf_purchase_group translate="label" >
+                    <label>Referral Purchase Option</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1001</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>                        
+                        <peexl_rf_purchase translate="label">
+                            <label>Give bonus for referral purchase </label>
+                            <!--<comment>Source model provider Magento's default Yes/No values</comment>-->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_rf_purchase>                        
+                    </fields>
+                </peexl_rf_purchase_group>
+                <peexl_rf_bonus_purchase_group translate="label" >
+                    <label>Bonus Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1002</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>                        
+                        <peexl_rf_bonus_purchase translate="label">
+                            <label>Use bonuses for purchase </label>
+                            <!--<comment>Source model provider Magento's default Yes/No values</comment>-->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_rf_bonus_purchase>  
+                        <peexl_rf_bonus_eq translate="label">
+                            <label>1 Bonus equals : </label>
+                            <!--<comment>Source model provider Magento's default Yes/No values</comment>-->
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </peexl_rf_bonus_eq>                      
+                    </fields>
+                </peexl_rf_bonus_purchase_group>
+                <peexl_rf_invitation_form_group translate="label" >
+                    <label>Referral Invitation Form</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1003</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <peexl_rf_invitation_form translate="label">
+                            <label>Enable Invitation Form: </label>
+                            <!--<comment>Source model provider Magento's default Yes/No values</comment>-->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_rf_invitation_form>
+                        <peexl_rf_transational_email_id translate="label">
+                            <label>Transaction Email ID: </label>
+                            <!--<comment>Source model provider Magento's default Yes/No values</comment>-->
+                            <frontend_type>text</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number</validate>
+                        </peexl_rf_transational_email_id>
+                    </fields>
+                </peexl_rf_invitation_form_group>
+                <peexl_rf_social_networks_group translate="label" >
+                    <label>Social Networks</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1004</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <peexl_rf_social_networks translate="label">
+                            <label>Enable Social Networks</label>
+                            <!--<comment>Source model provider Magento's default Yes/No values</comment>-->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_rf_social_networks>
+                        <peexl_rf_social_networks_fb translate="label">
+                            <label>Enable Facebook</label>
+                            <!--<comment>Source model provider Magento's default Yes/No values</comment>-->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_rf_social_networks_fb>
+                        <peexl_rf_social_networks_tw translate="label">
+                            <label>Enable Twitter</label>
+                            <!--<comment>Source model provider Magento's default Yes/No values</comment>-->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_rf_social_networks_tw>
+                        <peexl_rf_social_networks_gplus translate="label">
+                            <label>Enable Google Plus</label>
+                            <!--<comment>Source model provider Magento's default Yes/No values</comment>-->
+                            <frontend_type>select</frontend_type>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_rf_social_networks_gplus>
+                    </fields>
+                </peexl_rf_social_networks_group>
+            </groups>
+        </peexl>
+    </sections>
+</config>

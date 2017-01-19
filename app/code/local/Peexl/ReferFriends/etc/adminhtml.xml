@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Peexl Modules</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <peexl translate="title">
+                                        <title>Peexl - All</title>
+                                        <sort_order>100</sort_order>
+                                    </peexl>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu> 
+        <peexl_main_menu translate="title" >
+            <title>Referrals</title>
+            <sort_order>50</sort_order>             
+            <children>
+                <peexl_rf_referals>
+                    <title>Referal's Order Bonus Rules</title>
+                    <action>peexl_referfriends/adminhtml_referrals_rules</action>
+                    <sort_order>9996</sort_order>                
+                </peexl_rf_referals>
+                <peexl_rf_discounts>
+                    <title>Manage Bonus Discounts</title>
+                    <action>peexl_referfriends/adminhtml_referrals_discounts</action>
+                    <sort_order>9997</sort_order>                
+                </peexl_rf_discounts>
+                <peexl_rf_bonus_transactions>
+                    <title>Bonus Transactions</title>
+                    <action>peexl_referfriends/adminhtml_referrals_transactions</action>
+                    <sort_order>9998</sort_order>                
+                </peexl_rf_bonus_transactions>
+                <peexl_rf_referal_statistics>
+                    <title>Referral Statistics</title>
+                    <action>peexl_referfriends/adminhtml_referrals_statistics</action>
+                    <sort_order>9999</sort_order>                
+                </peexl_rf_referal_statistics>
+            </children>
+        </peexl_main_menu>
+    </menu>
+</config>

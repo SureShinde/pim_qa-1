@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <catalog>
+            <children>		
+                <designer>
+                    <title>Designer</title>
+                    <sort_order>999</sort_order>
+                    <children>
+                        <graphics>
+                            <title>Images</title>
+                            <action>productdesigner/adminhtml_graphics</action>
+                            <sort_order>100</sort_order>
+                        </graphics>
+                        <patterns>
+                            <title>Patterns</title>
+                            <action>productdesigner/adminhtml_pattern</action>
+                            <sort_order>200</sort_order>
+                        </patterns>
+                        <fonts>
+                            <title>Fonts</title>
+                            <action>productdesigner/adminhtml_font</action>
+                            <sort_order>300</sort_order>
+                        </fonts>
+                        <!--<fonts_colors>
+                            <title>Fonts Colors</title>
+                            <action>productdesigner/adminhtml_font_color</action>
+                            <sort_order>400</sort_order>
+                        </fonts_colors>-->
+                    </children>
+                </designer>
+            </children>
+        </catalog>	
+    </menu>
+</config>
+                                

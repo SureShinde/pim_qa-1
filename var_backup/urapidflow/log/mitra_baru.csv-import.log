@@ -1,0 +1,6 @@
+ACTIVITY,,,"Retrieving number of rows"
+ACTIVITY,,,"Preparing data"
+WARNING,2,1,"Unknown field, the column will be ignored"
+ACTIVITY,,,Importing
+WARNING,2,2,"Original file image does not exist"
+ACTIVITY,,,Done

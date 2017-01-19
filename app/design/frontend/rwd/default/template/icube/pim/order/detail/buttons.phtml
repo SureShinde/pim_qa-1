@@ -1,0 +1,12 @@
+<?php $_order = $this->getOrder() ?>
+	<form name="form-info" id="order-view-form" action="/pim/order/viewsubmit" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="orderid" value="<?php echo $_order->getId() ?>"/>
+		<div class="buttons-set">
+			<a href="/pim/order/list/" id="order_back" class="button submit"><?php echo $this->__('Back') ?></a>
+			<?php if($_order->canShip()): ?>
+			<button type="submit" id="order_cannot_fulfill" name="action" title="<?php echo $this->__('Cannot Fulfill') ?>" class="button submit" value="cannot_fulfill"><span><span><?php echo $this->__('Cannot Fulfill') ?></span></span></button>
+			<button type="submit" id="order_ship" title="<?php echo $this->__('Ship') ?>" name="action" class="button submit" value="order_ship"><span><span><?php echo $this->__('Ship') ?></span></span></button>
+			<button type="submit" id="order_confirm" title="<?php echo $this->__('Confirm') ?>" name="action" class="button submit" value="order_confirm"><span><span><?php echo $this->__('Confirm') ?></span></span></button>
+			<?php endif; ?>
+		</div>
+	</form>

@@ -1,0 +1,21 @@
+<div class="page-title">
+	<h1><?php echo $this->__('Dashboard') ?></h1>
+</div>
+<div class="col2-set">
+    <div class="col-1">
+		<h1><?php echo $this->__('Sales:') ?></h1>
+			Sales week to date:  Rp. <?php echo $this->getWeekly(); ?>
+			<br>
+			Sales month to date:  Rp. <?php echo $this->getMonthly(); ?>
+			<br>
+	</div>
+	<div class="col-2">
+		<h1><?php echo $this->__('Product:') ?></h1>
+		Number of Products Uploaded: <?php echo $this->getUploaded(); ?>
+		<br>
+		Number of Products Approved: <?php echo $this->getApproved(); ?>
+		<br>
+		Number of Products Inactive: <?php echo $this->getInactive(); ?>
+		<br>
+	</div>
+</div>

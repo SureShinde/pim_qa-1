@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <icube translate="label" module="icube_order">
+            <label>Icube</label>
+            <sort_order>100</sort_order>
+        </icube>
+    </tabs>
+    <sections>
+        <icube_order translate="label" module="icube_order">
+            <label>Order Integration</label>
+            <tab>icube</tab>
+            <sort_order>2</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <mro_order translate="label" module="icube_order">
+                    <label>Klik MRO Order Integration</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <url translate="label">
+                            <label>URL  :</label>
+                            <comment>KlikMro site webservice api</comment> 
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url>
+                        <api_user translate="label">
+                            <label>Username  :</label> 
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </api_user>
+                        <api_key translate="label">
+                            <label>API Key  :</label> 
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </api_key>
+                    </fields>
+                </mro_order>
+            </groups>
+        </icube_order>
+    </sections>
+</config>

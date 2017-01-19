@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs> 
+        <peexl_extensions module="peexl_dailydeals" translate="label" >
+                 <label>Peexl Extensions</label>
+                 <sort_order>100</sort_order>
+        </peexl_extensions> 
+    </tabs>
+    <sections>
+        <dailydeals module="peexl_dailydeals" translate="label" >
+            <label>Daily Deals</label>
+            <tab>peexl_extensions</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>            
+            <groups>
+                <peexl_dailydeals_configuration_group translate="label" >
+                    <label>Main Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <peexl_dailydeals_enable translate="label">
+                            <label>Enable Daily Deals: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_dailydeals_enable>
+                        <peexl_dailydeals_show_in_header_links translate="label">
+                            <label>Show in Header Links: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_dailydeals_show_in_header_links>
+<!--                        <peexl_dailydeals_use_as_homepage translate="label">
+                            <label>Use Daily Deals as Homepage: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_dailydeals_use_as_homepage>-->
+                        <peexl_dailydeals_show_remaining_qty translate="label">
+                            <label>Show remaining quantity: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_dailydeals_show_remaining_qty>
+                        <peexl_dailydeals_show_countdown_timer translate="label">
+                            <label>Show countdown timer: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>400</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_dailydeals_show_countdown_timer>
+                        <peexl_dailydeals_no_deals_message translate="label">
+                            <label>No deals message: </label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>500</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>This message will appear in case the product quantity or the countdown reaches 0 and there is no new deal scheduled.</comment>
+                        </peexl_dailydeals_no_deals_message>
+                    </fields>
+                </peexl_dailydeals_configuration_group>
+                <peexl_dailydeals_most_viewed_block_configuration_group translate="label" >
+                    <label>Most Viewed Deals Block Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <peexl_dailydeals_most_viewed_show translate="label">
+                            <label>Show : </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_dailydeals_most_viewed_show>
+                        <peexl_dailydeals_most_viewed_title translate="label">
+                            <label>Block Title: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </peexl_dailydeals_most_viewed_title>
+                        <peexl_dailydeals_most_viewed_sidebar translate="label">
+                            <label>Sidebar : </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>peexl_dailydeals/system_config_source_sidebars</source_model>
+                        </peexl_dailydeals_most_viewed_sidebar>
+                    </fields>
+                </peexl_dailydeals_most_viewed_block_configuration_group>
+                <peexl_dailydeals_random_deal_block_configuration_group translate="label" >
+                    <label>Random Deal Block Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <peexl_dailydeals_random_deal_show translate="label">
+                            <label>Show : </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_dailydeals_random_deal_show>
+                        <peexl_dailydeals_random_deal_title translate="label">
+                            <label>Block Title: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </peexl_dailydeals_random_deal_title>
+                        <peexl_dailydeals_random_deal_sidebar translate="label">
+                            <label>Sidebar : </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>peexl_dailydeals/system_config_source_sidebars</source_model>
+                        </peexl_dailydeals_random_deal_sidebar>
+                    </fields>
+                </peexl_dailydeals_random_deal_block_configuration_group>
+                <peexl_dailydeals_top_selling_deal_block_configuration_group translate="label" >
+                    <label>Top Selling Deal Block Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <peexl_dailydeals_top_selling_deal_show translate="label">
+                            <label>Show : </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_dailydeals_top_selling_deal_show>
+                        <peexl_dailydeals_top_selling_deal_title translate="label">
+                            <label>Block Title: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </peexl_dailydeals_top_selling_deal_title>
+                        <peexl_dailydeals_top_selling_deal_sidebar translate="label">
+                            <label>Sidebar : </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>peexl_dailydeals/system_config_source_sidebars</source_model>
+                        </peexl_dailydeals_top_selling_deal_sidebar>
+                    </fields>
+                </peexl_dailydeals_top_selling_deal_block_configuration_group>
+                <peexl_dailydeals_upcoming_deal_block_configuration_group translate="label" >
+                    <label>Upcoming Deal Block Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2500</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <peexl_dailydeals_upcoming_deal_show translate="label">
+                            <label>Show : </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_dailydeals_upcoming_deal_show>
+                        <peexl_dailydeals_upcoming_deal_title translate="label">
+                            <label>Block Title: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </peexl_dailydeals_upcoming_deal_title>
+                        <peexl_dailydeals_upcoming_deal_sidebar translate="label">
+                            <label>Sidebar : </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>peexl_dailydeals/system_config_source_sidebars</source_model>
+                        </peexl_dailydeals_upcoming_deal_sidebar>
+                        <peexl_dailydeals_upcoming_deal_startdate_show translate="label">
+                            <label>Show Deal Start Date : </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_dailydeals_upcoming_deal_startdate_show>
+                    </fields>
+                </peexl_dailydeals_upcoming_deal_block_configuration_group>
+                <peexl_dailydeals_color_configuration_group translate="label" >
+                    <label>Countdown configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <peexl_dailydeals_configuration_countdown_timer_text_color translate="label">
+                            <label>Countdown timer text color: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </peexl_dailydeals_configuration_countdown_timer_text_color>
+                        <peexl_dailydeals_configuration_countdown_timer_bkg_color translate="label">
+                            <label>Countdown timer background color: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </peexl_dailydeals_configuration_countdown_timer_bkg_color>
+                        <peexl_dailydeals_configuration_countdown_timer_notes_color translate="label">
+                            <label>Countdown timer notes color: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </peexl_dailydeals_configuration_countdown_timer_notes_color>
+                        <peexl_dailydeals_configuration_countdown_timer_days_text translate="label">
+                            <label>Days text: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </peexl_dailydeals_configuration_countdown_timer_days_text>
+                    </fields>
+                </peexl_dailydeals_color_configuration_group>   
+                <peexl_dailydeals_slider_block_configuration_group translate="label" >
+                    <label>Deals slider block configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <expanded>1</expanded>
+                    <fields>
+                        <peexl_dailydeals_slider_block_show translate="label">
+                            <label>Show deal slider : </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </peexl_dailydeals_slider_block_show>
+                        <peexl_dailydeals_slider_block_title_text translate="label">
+                            <label>Slider block title: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </peexl_dailydeals_slider_block_title_text>
+                       <peexl_dailydeals_slider_block_background_color translate="label">
+                            <label>Background color: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </peexl_dailydeals_slider_block_background_color>
+                        <peexl_dailydeals_slider_block_header_background_color translate="label">
+                            <label>Header Background color: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </peexl_dailydeals_slider_block_header_background_color>
+                        <peexl_dailydeals_slider_block_header_text_color translate="label">
+                            <label>Header Text color: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>                            
+                        </peexl_dailydeals_slider_block_header_text_color>
+                        <peexl_dailydeals_slider_block_slide_duration translate="label">
+                            <label>Slide duration: </label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>400</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store> 
+                            <comment>The duration of each slide in seconds</comment>                           
+                        </peexl_dailydeals_slider_block_slide_duration>
+                        <peexl_dailydeals_slider_block_slider_autostart translate="label">
+                            <label>Slide autostart: </label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>500</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store> 
+                            <source_model>adminhtml/system_config_source_yesno</source_model>                            
+                        </peexl_dailydeals_slider_block_slider_autostart>
+                    </fields> 
+                </peexl_dailydeals_slider_block_configuration_group>    
+            </groups>
+        </dailydeals>        
+    </sections>
+</config>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Icube_External>
+            <version>0.1.0</version>
+        </Icube_External>
+    </modules>
+    <global>
+    	<models>
+            <external><!-- name of the model configuration-->
+                <class>Icube_External_Model</class><!-- path where to look for model classes for-->
+                <resourceModel>external_resource</resourceModel><!-- pointer to the resource model configuration node-->
+            </external>
+            <external_resource><!-- resource model configuration name -->
+                <class>Icube_External_Model_Resource</class><!-- path where to look for resource model classes for -->
+                <entities><!-- entities list -->
+                    <ftpd><!-- our test entity -->
+                        <table>ftpd</table><!-- name of the external table to store data for our entity -->
+                    </ftpd>
+                </entities>
+            </external_resource>
+        </models>
+        <resources>
+            <external_db><!-- name of the external db connection -->
+                <connection>
+                    <host><![CDATA[10.100.100.27]]></host>
+                    <username><![CDATA[pureftpd_userDB]]></username>
+                    <password><![CDATA[Pur3FTP_QA]]></password>
+                    <dbname><![CDATA[_pureftpdDB]]></dbname>
+                    <model>mysql4</model>
+                    <type>pdo_mysql</type>
+                    <active>1</active>
+                </connection>
+            </external_db>
+            <external_setup>
+				<connection>
+					<use>external_db</use>
+				</connection>
+			</external_setup>
+            <!-- <solvingmagento_externaldb_setup>
+                <setup>
+                    <module>Solvingmagento_Externaldb</module>
+                    <class>Mage_Eav_Model_Entity_Setup</class>
+                </setup>
+                <connection>
+                    <use>external_db</use>
+                </connection>
+            </solvingmagento_externaldb_setup> -->
+            <external_write><!-- connection used for write access -->
+                <connection>
+                    <use>external_db</use>
+                </connection>
+            </external_write>
+            <external_read><!-- connection used for read access -->
+                <connection>
+                    <use>external_db</use>
+                </connection>
+            </external_read>
+        </resources>
+    </global>
+</config>

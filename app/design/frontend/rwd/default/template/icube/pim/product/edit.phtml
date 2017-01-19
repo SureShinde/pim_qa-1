@@ -1,0 +1,66 @@
+<?php $attributes = $this->getAttributes() ?>
+<h1><?php echo $this->__('Product Edit') ?></h1>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<form name="form" id="product-edit-form" action="/pim/product/editsubmit" method="post" enctype="multipart/form-data">
+	<fieldset>
+		<div class="col2-set">
+			<div class="col-1">
+				<ul class="form-list">
+					<input type="hidden" name="product_id" value="<?php echo $this->getProduct()->getId(); ?>"/>
+                    <?php foreach ($attributes as $attribute): ?>
+						<?php $attributeObj = Mage::getSingleton('eav/config')->getAttribute(Mage_Catalog_Model_Product::ENTITY, $attribute['code']); ?>
+						<?php if($attributeObj->getData('available_for_vendor') === '0') continue; ?>
+						<li>
+							<div class="col2-set">
+								<div class="col-1">
+									<label for="<?php echo $attributeObj->getAttributeCode() ?>"><?php echo $attributeObj->getFrontend()->getLabel(); ?><?php if ($attributeObj->getIsRequired() == 1): ?><span class="required"></span> <?php endif; ?></label>
+								</div>
+								<div class="col-2">
+				                	<?php echo $this->getAttributeHtml($attributeObj); ?>
+								</div>
+							</div>
+		                 </li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+			<?php /* Vendor not allowed assign Product Categories
+			<div class="col-2">
+				<h5><?php echo $this->__('Product Categories'); ?></h5>
+                <?php echo $this->getCategoryNodes(); ?>
+			</div>
+			 */ ?>
+		</div>
+		<div class="buttons-set">
+		    <button type="submit" id="save_edit_product" title="<?php echo $this->__('Save') ?>" class="button submit"><span><span><?php echo $this->__('Save') ?></span></span></button>
+		    <p class="required mr10"><?php echo $this->__('Required Fields') ?> *</p>
+	   	</div>
+	</fieldset>
+</form>
+<script type="text/javascript">
+	//< ![CDATA[
+        var producteditform = new VarienForm('product-edit-form');
+        jQuery(".check-level").on("change", function() {
+	        var categoryid = jQuery(this).attr('categoryid');
+	        var parent = jQuery(this).attr('parent');
+	        
+	        if(jQuery(this).is(':checked'))
+	        {
+		    	jQuery('.parent-'+categoryid).parent().show();
+		    } else {
+			    
+			    jQuery('.parent-'+categoryid).parent().hide();
+		    }
+		});
+		
+		jQuery(document).ready(function(){
+			jQuery('.check-level').each(function(){
+				var categoryid = jQuery(this).attr('categoryid');
+				
+				if(jQuery(this).is(':checked'))
+		        {
+			    	jQuery('.parent-'+categoryid).parent().show();
+			    } 
+			});
+		});
+    //]]>
+</script>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Peexl_CategoryProduct>
+            <version>1.0.0</version>
+        </Peexl_CategoryProduct>
+    </modules>
+    <global>
+        <categoryproduct>
+            <class>Peexl_CategoryProduct_Block</class>
+            <class>Peexl_CategoryProduct_Model</class>
+        </categoryproduct>
+        <blocks>            
+            <adminhtml>
+                <rewrite>
+                    <catalog_category_tab_product>Peexl_CategoryProduct_Block_Adminhtml_Catalog_Category_Tab_Product</catalog_category_tab_product>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <models>
+            <catalog_resource>
+                <rewrite>
+                    <product>Peexl_CategoryProduct_Model_Catalog_Resource_Product</product>
+                    <category>Peexl_CategoryProduct_Model_Catalog_Resource_Category</category>
+                </rewrite>
+            </catalog_resource>
+        </models>    
+    </global>
+</config>

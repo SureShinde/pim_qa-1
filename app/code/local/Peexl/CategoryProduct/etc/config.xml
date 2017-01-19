@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Peexl_CategoryProduct>
+            <version>1.0.0</version>
+        </Peexl_CategoryProduct>
+    </modules>
+    <global>        
+        <models>
+            <peexl_categoryproduct>            
+                <class>Peexl_CategoryProduct_Model</class>
+            </peexl_categoryproduct>                
+        </models>    
+    </global>
+    <adminhtml>
+        <events>               
+            <catalog_product_save_before>
+                <observers>
+                    <peexl_categoryproduct>
+                        <type>model</type>
+                        <class>peexl_categoryproduct/observer</class>
+                        <method>catalogProductSaveBefore</method>
+                    </peexl_categoryproduct>
+                </observers>
+            </catalog_product_save_before>           
+        </events>
+    </adminhtml>    
+</config>

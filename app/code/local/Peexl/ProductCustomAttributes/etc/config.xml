@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <modules>
+        <Peexl_ProductCustomAttributes>
+            <version>0.1.0</version>
+        </Peexl_ProductCustomAttributes>
+    </modules>
+    
+    <global>
+        
+        <blocks>
+            <peexl_productcustomattributes>
+                <class>Peexl_ProductCustomAttributes_Block</class>
+            </peexl_productcustomattributes>
+
+            <adminhtml>                 
+                    <rewrite>
+                        <catalog_product_edit_tab_options_type_select>Peexl_ProductCustomAttributes_Block_Adminhtml_Catalog_Product_Edit_Tab_Options_Type_Select</catalog_product_edit_tab_options_type_select>
+                        <catalog_product_edit_tab_options_option>Peexl_ProductCustomAttributes_Block_Adminhtml_Catalog_Product_Edit_Tab_Options_Option</catalog_product_edit_tab_options_option>                        
+                    
+                    </rewrite>                
+            </adminhtml>
+        </blocks>
+        <models>
+            <peexl_productcustomattributes>            
+                <class>Peexl_ProductCustomAttributes_Model</class>
+            </peexl_productcustomattributes> 
+            <catalog>
+                <rewrite>
+                    <product_option>Peexl_ProductCustomAttributes_Model_Catalog_Product_Option</product_option>                
+                </rewrite>
+            </catalog>               
+        </models>  
+        <helpers>
+            <peexl_productcustomattributes>
+                <class>Peexl_ProductCustomAttributes_Helper</class>
+            </peexl_productcustomattributes>
+        </helpers>
+        
+        
+        
+        <resources>
+            <productcustomattributes_setup>
+                <setup>
+                    <module>Peexl_ProductCustomAttributes</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </productcustomattributes_setup>
+            <productcustomattributes_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </productcustomattributes_write>
+            <productcustomattributes_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </productcustomattributes_read>
+        </resources>
+        
+      
+    
+        
+    </global>   
+    <adminhtml>
+        <layout>
+            <updates>
+                <productcustomattributes>
+                    <file>peexl_productcustomattributes.xml</file>
+                </productcustomattributes>
+            </updates>
+        </layout>
+
+        <events>
+            <catalog_product_save_after>
+                <observers>
+                    <productcustomattributes_save_product_data>
+                        <type>singleton</type>
+                        <class>peexl_productcustomattributes/observer</class>
+                        <method>saveProductCustomOptions</method>
+                    </productcustomattributes_save_product_data>
+                </observers>
+            </catalog_product_save_after>
+            <catalog_product_save_before>
+                <observers>
+                    <productcustomattributes_save_product_cutom_options_data>
+                        <type>singleton</type>
+                        <class>peexl_productcustomattributes/observer</class>
+                        <method>saveProductCustomOptionsData</method>
+                    </productcustomattributes_save_product_cutom_options_data>
+                </observers>
+            </catalog_product_save_before>
+        </events>
+    </adminhtml>
+</config>    
+

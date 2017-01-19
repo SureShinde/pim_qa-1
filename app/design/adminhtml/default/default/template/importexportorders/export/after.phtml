@@ -1,0 +1,62 @@
+<script>
+
+
+    function sendExportRequest( stepNumber, creationTime , grid,xls){
+
+        var selectedItems='';
+        var form = $('export_form');
+        var exportControllerUrl = form.readAttribute("action");
+
+        var stepLength = $('orders_per_file').getValue();
+
+        var outputContainerId = "exportResult";
+        //console.log(form);
+        var storeId = $F(form['store_view']);
+
+        var intRegex = /^\d+$/;
+
+        if( !intRegex.test(stepLength) ){
+            stepLength = 100;
+        }
+        if(grid){
+            selectedItems=importexportorders_order_grid_massactionJsObject.grid.massaction.checkedString;
+        }
+
+        if(!creationTime)
+            $(outputContainerId).innerHTML = '';
+
+        new Ajax.Request( exportControllerUrl, {
+            method:'post',
+            parameters: {step_number: stepNumber, step_length: stepLength, creation_time: creationTime, store_id: storeId,selected_items:selectedItems,xls:xls},
+            onSuccess: function(transport) {
+                console.log(transport.responseText);
+                if(transport.responseText){
+                    var response = transport.responseText.evalJSON();
+                    var outputText = "";
+                    if(response.type=='xls'){
+
+                        outputText = "<div>Orders were exported. <br/><span class = 'bold-green'>Order export complete. <a href=\""+response.url+"\">Download XLS file</a></span></div>";
+                        $(outputContainerId).insert(outputText);
+
+
+                    }else{
+                        if(!response.stepStop){
+                            outputText = "<div>" + response.exported + " orders were exported.</div>";
+                            $(outputContainerId).insert(outputText);
+                            sendExportRequest( response.stepNumber, response.time );
+                        }
+                        else{
+                            outputText = "<div>" + response.exported + " orders were exported. <br/><span class = 'bold-green'>Order export complete. You can find exporeted orders in the default magento export directory ( magento root folder /var/export )</span></div>";
+                            $(outputContainerId).insert(outputText);
+                        }
+                    }
+
+                }
+            },
+            onFailure: function() {
+                console.log('export failed');
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,23 @@
+<?php $_session = Mage::getSingleton('pim/session'); ?>
+<div class="header-language-background">
+    <div class="header-language-container">
+        <p class="welcome-msg"><?php echo $this->htmlEscape($this->__('Welcome, %s', $_session->getVendor()->getVendorName())) ?></p>
+        <?php if($_session->isLoggedIn()) : ?>
+        <div>
+            <ul>
+	            <li><a href="/pim/vendor/logout"><?php echo $this->__('Log out')?></a></li>
+            </ul>
+        </div>
+        <?php endif ?>
+    </div>
+</div>
+<header id="header" class="page-header">
+    <div class="page-header-container">
+        <!-- Navigation -->
+
+        <div id="header-nav" class="skip-content">
+            <?php echo $this->getChildHtml('headerMenu') ?>
+        </div>
+
+    </div>
+</header>

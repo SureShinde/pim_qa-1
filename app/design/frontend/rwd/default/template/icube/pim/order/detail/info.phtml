@@ -1,0 +1,25 @@
+<?php /** @var $this Mage_Sales_Block_Order_Info */ ?>
+<?php $_order = $this->getOrder() ?>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<div class="page-title title-buttons">
+    <h1><?php echo $this->__('Order Detail') ?></h1>
+    <?php echo $this->getChildHtml('buttons') ?>
+</div>
+<p><?php echo $this->__('Order Number: #%s', $_order->getRealOrderId()) ?></p>
+<p><?php echo $this->__('Order Status: %s', $_order->getStatusLabel()) ?></p>
+<p><?php echo $this->__('Order Date: %s', $this->formatDate($_order->getCreatedAtStoreDate(), 'long')) ?></p>
+<?php if (!$_order->getIsVirtual()): ?>
+<div class="col1-set order-info-box">
+    <div class="col-1">
+        <div class="box">
+            <div class="box-title">
+                <h2><?php echo $this->__('Customer') ?></h2>
+            </div>
+            <div class="box-content">
+                <address><?php echo $_order->getShippingAddress()->format('html') ?></address>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+<?php echo $this->getChildHtml('order_items') ?>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config>    
+    <api>
+        <resources>
+            <order translate="title" module="icube_order">
+                <title>Order Resource</title>
+                <model>icube_order/order_api</model>
+                <acl>order</acl>
+                <methods>
+                    <create translate="title" module="icube_order">
+                        <title>Create order</title>
+                        <method>create</method>
+                        <acl>order/create</acl>
+                    </create>
+                </methods>
+                <faults module="icube_order">
+                    <data_invalid>
+                        <code>100</code >
+                        <message>Invalid customer data. Details in error message.</message>
+                    </data_invalid>
+                    <filters_invalid>
+                        <code>101</code >
+                        <message>Invalid filters specified. Details in error message.</message>
+                    </filters_invalid>
+                    <not_exists>
+                        <code>102</code >
+                        <message>Order doesn't exist.</message>
+                    </not_exists>
+                </faults>
+            </order>
+        </resources>
+        <resources_alias>
+            <order_api>order</order_api>
+        </resources_alias>
+        <acl>
+            <resources>
+                <order translate="title" module="icube_order">
+                     <title>KawanLama Orders</title>
+                     <create translate="title" module="icube_order">
+                        <title>Create</title>
+                     </create>
+                </order>
+            </resources>
+        </acl>
+    </api>
+</config>

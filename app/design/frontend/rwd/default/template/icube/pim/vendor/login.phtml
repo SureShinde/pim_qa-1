@@ -1,0 +1,30 @@
+<div class="page-title">
+	<h1><?php echo $this->__('Vendor Login') ?></h1>
+</div>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<form action="/pim/vendor/loginPost" method="post" id="vendor-login-form">
+<div class="login-box generic-box">
+    <div class="registered-users">
+        <div class="content">
+            <ul class="form-list">
+                <li>
+                    <label for="username"><?php echo $this->__('Username') ?> <span class="required"></span></label><br />
+                    <input name="login[username]" title="<?php echo $this->__('Username') ?>" id="username" type="text" class="input-text required-entry" />
+                </li>
+                <li>
+                    <label for="pass"><?php echo $this->__('Password') ?> <span class="required"></span></label><br />
+                    <input name="login[password]" type="password" class="input-text required-entry vaidate-password" id="pass" />
+                </li>
+            </ul>
+            <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        </div>
+        <div class="buttons-set">
+            <button type="submit" id="login_vendor_button" title="<?php echo $this->__('Login') ?>" class="button submit"><span><span><?php echo $this->__('Login') ?></span></span></button>
+        </div>
+    </div>
+</div>
+</form>
+
+<script type="text/javascript">
+    var LoginForm = new VarienForm('vendor-login-form', true);
+</script>

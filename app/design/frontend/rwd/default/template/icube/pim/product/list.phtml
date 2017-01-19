@@ -1,0 +1,121 @@
+<h1><?php echo $this->__('Product List') ?></h1>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<?php if(!$this->getRequest()->getParams()) : ?>
+<div class="show_button button"><?php echo $this->__('Show Filter') ?></div>
+<?php else: ?>
+<div class="show_button button"><?php echo $this->__('Hide Filter') ?></div>
+<?php endif ?>
+<form method="get" id="form-filter-product" <?php if(!$this->getRequest()->getParams()) : ?>style="display:none;"<?php endif ?>>
+	<fieldset>
+	    <div class="col2-set">
+	        <div class="col-1">
+	            <ul class="form-list">
+                    <li>
+                        <label for="filter-vendor_sku"><?php echo $this->__('Vendor SKU') ?></label><br/>
+                        <input id="filter-vendor_sku" name="filter_vendor_sku" title="<?php echo $this->__('Vendor SKU') ?>" type="text" class="input-text" style="width:160px;" value="<?php echo $this->getRequest()->getParam('filter_vendor_sku') ?>" />
+                    </li>
+	                <li>
+	                    <label for="filter-name"><?php echo $this->__('Product Name') ?></label><br/>
+	                    <input id="filter-name" name="filter_name" title="<?php echo $this->__('Product Name') ?>" type="text" class="input-text" style="width:160px;" value="<?php echo $this->getRequest()->getParam('filter_name') ?>" />
+	                </li>
+	            </ul>
+	        </div>
+	        <div class="col-2">
+	            <ul class="form-list">
+	                <li>
+	                    <label for="filter-approval_status"><?php echo $this->__('Approval Status') ?></label><br/>
+	                    <select id="filter-approval_status" name="filter_approval_status" title="<?php echo $this->__('Approval Status') ?>"  style="width:160px;">
+		                <?php $_status = (string)$this->getRequest()->getParam('filter_approval_status') ?>
+	                    <?php foreach($this->getApprovalStatusOptions() as $approval) : ?>
+	                        <option value="<?php echo $approval['value'] ?>" <?php echo $_status===$approval['value']?'selected="selected"':'' ?>><?php echo $approval['label'] ?></option>
+	                    <?php endforeach; ?>
+	                    </select>
+	                </li>
+	                <li>
+	                    <label for="filter-qty-from"><?php echo $this->__('Qty') ?></label><br/>
+	                    <input id="filter-qty-from" name="filter_qty_from" title="<?php echo $this->__('From Qty') ?>" type="text" class="input-text" style="width:80px;" value="<?php echo $this->getRequest()->getParam('filter_qty_from') ?>" /> -
+	                    <input id="filter-qty-to" name="filter_qty_to" title="<?php echo $this->__('To  Qty') ?>" type="text" class="input-text" style="width:80px;" value="<?php echo $this->getRequest()->getParam('filter_qty_to') ?>" />
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+		<div class="button-set">
+			<input type="submit" value="search" style="display:none" />
+            <input type="hidden" name="limit" value="<?php echo $this->getRequest()->getParam('limit')?>"/>
+            <?php $paramP = $this->getRequest()->getParam('p'); ?>
+            <input type="hidden" name="p" value="<?php echo ($paramP === '' || $paramP === NULL) ? '1' : $paramP ?>"/>
+	        <button class="button" name="reset_filter" type="button" onclick="setLocation('/pim/product/list')" id="filter-search" value="search"><span><?php echo $this->__('Reset Filter') ?></span></button>
+            <button class="button" name="submit_action" type="submit" id="filter-search" value="search"><span><?php echo $this->__('Search') ?></span></button>
+        </div>
+	</fieldset>
+</form>
+<br>
+<fieldset>
+	<?php echo $this->getChildHtml('toolbar') ?>
+    <table cellspacing="0" cellpadding="0" class="data-table">
+        <col width="" />
+        <col width="" />
+		<col width="" />
+        <col width="" />
+        <col width="" />
+        <col width="" />
+        <col width="" />
+        <thead>
+            <tr>
+                <th><?php echo $this->__('Vendor SKU')?></th>
+                <th><?php echo $this->__('Product Name')?></th>
+                <th><?php echo $this->__('Attribute Set')?></th>
+                <th><?php echo $this->__('Qty')?></th>
+                <th><?php echo $this->__('Price')?></th>
+                <th><?php echo $this->__('Approval Status')?></th>
+                <th><?php echo $this->__('Action')?></th>
+            </tr>
+        </thead>
+        <tbody>
+		<?php foreach ($this->getProductCollection() as $_p): $_id = $_p->getEntityId(); ?>
+			<tr>
+				<td>
+					<?php echo $this->htmlEscape($_p->getVendorSku()); ?>
+				</td>
+				<td>
+					<?php echo $this->htmlEscape($_p->getName()); ?>
+				</td>
+				<td>
+					<?php echo $this->htmlEscape($this->getProductSetName($_p->getAttributeSetId())); ?>
+				</td>
+				<td>
+					<?php echo $this->htmlEscape($_p->getQty()*1); ?>
+				</td>
+				<td>
+					<?php echo $this->helper('checkout')->formatPrice($_p->getPrice()); ?>
+				</td>
+				<td>
+					<?php echo $this->htmlEscape($_p->getAttributeText('approval_status')); ?>
+				</td>
+				<td>
+					<a href="<?php echo $this->getEditUrl($_id)?>"><?php echo $this->__('Edit') ?></a>
+				<?php if($_p->getAttributeText('approval_status')=='Not Approved' || $_p->getCost()==''):?>
+					/<a href="<?php echo $this->getDeleteUrl($_id)?>" onclick="return confirm('Are you sure you want to delete?')"><?php echo $this->__('Delete') ?></a>
+				<?php endif; ?>
+				</td>
+			</tr>
+		<?php endforeach ?>
+        </tbody>
+    </table>
+    <?php echo $this->getChildHtml('toolbar') ?>
+</fieldset>
+<script type="text/javascript">
+jQuery(function() {
+	jQuery('.show_button').on('click',function() {
+		if(jQuery('#form-filter-product').css('display') == 'block') {
+			jQuery('#form-filter-product').slideUp('fast');
+			jQuery('.show_button').text('Show Filter');
+		} else {
+			jQuery('#form-filter-product').slideDown('fast');
+			jQuery('.show_button').text('Hide Filter');
+		}
+
+	});
+});
+
+</script>

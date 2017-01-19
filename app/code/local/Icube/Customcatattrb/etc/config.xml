@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Icube_Customcatattrb>
+			<version>0.1.0</version>
+		</Icube_Customcatattrb>
+	</modules>
+	<global>
+		 <models>
+            <customcatattrb>
+                <class>Icube_Customcatattrb_Model</class>
+            </customcatattrb>
+		 </models>
+		 <resources>
+				<icube_customcatattrb_setup>
+					<setup>
+						<module>Icube_Customcatattrb</module>
+						<class>Mage_Catalog_Model_Resource_Setup</class>
+					</setup>
+					<connection>
+						<use>default_setup</use>
+					</connection>
+				</icube_customcatattrb_setup>
+		 </resources>
+	</global>
+</config>

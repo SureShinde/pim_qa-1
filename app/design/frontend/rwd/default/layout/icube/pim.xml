@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+	    <remove name="breadcrumbs" />
+	    <remove name="footer" />
+	    <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="head">
+        	<action method="addItem"><type>js_css</type><name>calendar/calendar-win2k-1.css</name><params></params></action>
+			<action method="addItem"><type>js</type><name>calendar/calendar.js</name></action>
+			<action method="addItem"><type>js</type><name>calendar/calendar-setup.js</name></action>
+			<block type="core/html_calendar" name="head.calendar" as="calendar" template="page/js/calendar.phtml"></block>
+        </reference>
+        <reference name="header">
+            <action method="setTemplate"><template>icube/pim/vendor/header.phtml</template></action>
+            <block type="core/text_list" name="header.menu" as="headerMenu" translate="label">
+                <label>Navigation Bar</label>
+                <block type="core/template" name="header.navigation" template="icube/pim/vendor/navigation.phtml">
+                </block>
+            </block>
+        </reference>
+    </default>
+    
+    <pim_vendor_login translate="label">
+	    <remove name="header.menu" />
+		<reference name="content">
+			<block type="core/template" name="pim.vendor.login" template="icube/pim/vendor/login.phtml"/>
+		</reference>
+    </pim_vendor_login>
+
+    <pim_vendor_password translate="label">
+        <reference name="content">
+            <block type="core/template" name="pim.vendor.password" template="icube/pim/vendor/password.phtml"/>
+        </reference>
+    </pim_vendor_password>
+    
+    <pim_vendor_index translate="label">
+        <reference name="content">
+            <block type="pim/vendor_dashboard" name="pim.vendor.dashboard" template="icube/pim/dashboard.phtml">
+            </block>
+        </reference>
+    </pim_vendor_index>
+    
+    <pim_product_upload translate="label">
+        <reference name="content">
+            <block type="core/template" name="pim.product.upload" template="icube/pim/product/upload.phtml">  
+            </block>
+        </reference>
+    </pim_product_upload>
+    
+    <pim_product_updateprice translate="label">
+        <reference name="content">
+            <block type="core/template" name="pim.product.price.update" template="icube/pim/product/update/price.phtml">  
+            </block>
+        </reference>
+    </pim_product_updateprice>
+    
+    <pim_product_updatestock translate="label">
+        <reference name="content">
+            <block type="core/template" name="pim.product.stock.update" template="icube/pim/product/update/stock.phtml">  
+            </block>
+        </reference>
+    </pim_product_updatestock>
+
+    <pim_product_updateimage translate="label">
+        <reference name="content">
+            <block type="core/template" name="pim.product.image.update" template="icube/pim/product/update/image.phtml">  
+            </block>
+        </reference>
+    </pim_product_updateimage>
+    
+    <pim_product_list translate="label">
+        <reference name="content">
+            <block type="pim/product_grid" name="pim.product.list" template="icube/pim/product/list.phtml" />
+        </reference>
+    </pim_product_list>
+    
+    <pim_product_edit translate="label">
+        <reference name="content">
+            <block type="pim/product_edit" name="pim.product.edit" template="icube/pim/product/edit.phtml" />
+        </reference>
+    </pim_product_edit>
+    
+    <pim_order_list translate="label">
+        <reference name="content">
+            <block type="pim/order_grid" name="pim.order.list" template="icube/pim/order/list.phtml" />
+            <block type="core/template" name="head.calendar.date" as="calendar.date" template="icube/pim/vendor/datepicker.phtml" />
+        </reference>
+    </pim_order_list>
+		
+    <pim_order_view translate="label">
+        <reference name="content">
+            <block type="sales/order_info" as="info" name="vendor.order.info" template="icube/pim/order/detail/info.phtml">
+                <block type="sales/order_items" name="order_items" template="icube/pim/order/detail/items.phtml">
+                    <action method="addItemRender"><type>default</type><block>sales/order_item_renderer_default</block><template>icube/pim/order/detail/items/renderer/default.phtml</template></action>
+                    <action method="addItemRender"><type>grouped</type><block>sales/order_item_renderer_grouped</block><template>icube/pim/order/detail/items/renderer/default.phtml</template></action>
+                </block>
+            </block>
+            <block type="sales/order_info" as="buttons" name="vendor.order.buttons" template="icube/pim/order/detail/buttons.phtml" />
+        </reference>
+    </pim_order_view>
+
+    <pim_shipment_list translate="label">
+        <reference name="content">
+            <block type="pim/shipment_grid" name="pim.shipment.list" template="icube/pim/shipment/list.phtml" />
+            <block type="core/template" name="head.calendar.date" as="calendar.date" template="icube/pim/vendor/datepicker.phtml" />
+        </reference>
+    </pim_shipment_list>
+
+    <pim_shipment_view translate="label">
+        <reference name="content">
+            <block type="sales/order_info" as="info" name="sales.order.info" template="icube/pim/shipment/detail/info.phtml" />
+            <block type="sales/order_shipment_items" name="shipment_items" template="icube/pim/shipment/detail/items.phtml">
+                <action method="addItemRender"><type>default</type><block>sales/order_item_renderer_default</block><template>sales/order/shipment/items/renderer/default.phtml</template></action>
+                <block type="sales/order_comments" name="shipment_comments" template="sales/order/comments.phtml" />
+            </block>
+        </reference>
+    </pim_shipment_view>
+    
+	<pim_shipment_create translate="label">
+        <reference name="content">
+            <block type="sales/order_info" as="info" name="vendor.order.info" template="icube/pim/order/detail/info.phtml">
+                <block type="sales/order_items" name="order_items" template="icube/pim/order/detail/items.phtml">
+                    <action method="addItemRender"><type>default</type><block>sales/order_item_renderer_default</block><template>icube/pim/order/detail/items/renderer/default.phtml</template></action>
+                    <action method="addItemRender"><type>grouped</type><block>sales/order_item_renderer_grouped</block><template>icube/pim/order/detail/items/renderer/default.phtml</template></action>
+                </block>
+            </block>
+            <block type="pim/shipment_tracking" as="tracking" name="vendor.shipment.tracking" template="icube/pim/shipment/tracking.phtml" />
+        </reference>
+    </pim_shipment_create>
+<!-- Email Layout -->
+    <pim_email_order_items>
+        <block type="sales/order_email_items" name="items" template="icube/pim/order/email/items.phtml">
+            <action method="addItemRender"><type>default</type><block>sales/order_email_items_order_default</block><template>icube/pim/order/email/default.phtml</template></action>
+            <action method="addItemRender"><type>grouped</type><block>sales/order_email_items_order_grouped</block><template>icube/pim/order/email/default.phtml</template></action>
+            <block type="sales/order_totals" name="order_totals" template="sales/order/totals.phtml">
+                <action method="setLabelProperties"><value>colspan="3" align="right" style="padding:3px 9px"</value></action>
+                <action method="setValueProperties"><value>align="right" style="padding:3px 9px"</value></action>
+                <block type="tax/sales_order_tax" name="tax" template="tax/order/tax.phtml">
+                    <action method="setIsPlaneMode"><value>1</value></action>
+                </block>
+            </block>
+        </block>
+        <block type="core/text_list" name="additional.product.info" />
+    </pim_email_order_items>
+    
+</layout>

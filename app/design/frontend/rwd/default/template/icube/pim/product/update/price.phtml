@@ -1,0 +1,32 @@
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<form name="form" id="update-price-upload-form" action="/pim/product/updatepricesubmit" method="post" enctype="multipart/form-data">
+<div class="wrapper">
+    <div class="box">
+        <h1><?php echo $this->__('Update Price Upload File') ?></h1>
+        <div>
+        <a href="/pim/product/sampleCsvFormat/type/price"><?php echo $this->__('Download the Sample CSV') ?></a><br/><br/>
+        <a href="/how-to-update-price" target="_blank"><?php echo $this->__('Tutorial Update Price') ?></a><br/><br/>
+        <div class="box-content">
+	        <div class="fieldset">
+	        	<ul class="form-list">
+				    <li>
+				        <label for="filename" class="required"><?php echo $this->__('Attach File') ?></label>
+		        		<div class="input-box required-entry">
+				        	<?php echo $this->__('Please select the File:') ?><input type="file" name="filename" id="filename" />
+				        </div>
+				    </li>
+		        </ul>
+	        </div>
+	    </div>
+	    <div class="buttons-set">
+		    <button type="submit" id="save_upload_product" title="<?php echo $this->__('Submit') ?>" class="button submit"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+		    <p class="required mr10"><?php echo $this->__('Required Fields') ?> *</p>
+	   	</div>
+    </div>
+</div>     
+</form>         
+<script type="text/javascript">
+	//< ![CDATA[
+        var productuploadform = new VarienForm('update-price-upload-form');
+    //]]>
+</script>

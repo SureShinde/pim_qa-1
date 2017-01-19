@@ -1,0 +1,117 @@
+<h1><?php echo $this->__('Shipment List') ?></h1>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<?php echo $this->getMessagesBlock()->toHtml() ?>
+<?php if(!$this->getRequest()->getParams()) : ?>
+<div class="show_button button"><?php echo $this->__('Show Filter') ?></div>
+<?php else: ?>
+<div class="show_button button"><?php echo $this->__('Hide Filter') ?></div>
+<?php endif ?>
+<form method="get" id="form-filter-product" <?php if(!$this->getRequest()->getParams()) : ?>style="display:none;"<?php endif ?>>
+	<fieldset>
+	    <div class="col2-set">
+	        <div class="col-1">
+	            <ul class="form-list">
+                    <li>
+                        <label for="filter-order_number"><?php echo $this->__('Order Number') ?></label><br/>
+                        <input id="filter-order_number" name="filter_order_number" title="<?php echo $this->__('Order Number') ?>" type="text" class="input-text" style="width:160px;" value="<?php echo $this->getRequest()->getParam('filter_order_number') ?>" />
+                    </li>
+	                <li>
+	                    <label for="filter-shipment_number"><?php echo $this->__('Shipment Number') ?></label><br/>
+	                    <input id="filter-shipment_number" name="filter_shipment_number" title="<?php echo $this->__('Shipment Number') ?>" type="text" class="input-text" style="width:160px;" value="<?php echo $this->getRequest()->getParam('filter_shipment_number') ?>" />
+	                </li>
+	                <li>
+	                    <label for="filter-date"><?php echo $this->__('Shipment Creation') ?></label><br/>
+	                    <input id="filter-date" name="filter_shipment_creation_date" title="<?php echo $this->__('Shipment Date') ?>" type="text" class="input-text" style="width:100px;" value="<?php echo $this->getRequest()->getParam('filter_shipment_creation_date') ?>" />
+<img title="<?php echo $this->__('Select Date') ?>" id="filter-date-trigger" src="<?php echo $this->getSkinUrl('images/calendar.gif');?>" style="display: inline; "/>
+	                </li>
+	            </ul>
+	        </div>
+	        <div class="col-2">
+	            <ul class="form-list">
+	                <li>
+	                    <label for="filter-shipment_carrier"><?php echo $this->__('Shipment Carrier') ?></label><br/>
+	                    <input id="filter-shipment_carrier" name="filter_shipment_carrier" title="<?php echo $this->__('Shipment Carrier') ?>" type="text" class="input-text" style="width:160px;" value="<?php echo $this->getRequest()->getParam('filter_shipment_carrier') ?>" />
+	                </li>
+	                <li>
+	                    <label for="filter-shipment_type"><?php echo $this->__('Shipment Type') ?></label><br/>
+	                    <input id="filter-shipment_type" name="filter_shipment_type" title="<?php echo $this->__('Shipment Type') ?>" type="text" class="input-text" style="width:160px;" value="<?php echo $this->getRequest()->getParam('filter_shipment_type') ?>" />
+	                </li>
+	                <li>
+	                    <label for="filter-track_number"><?php echo $this->__('Track Number') ?></label><br/>
+	                    <input id="filter-track_number" name="filter_track_number" title="<?php echo $this->__('Track Number') ?>" type="text" class="input-text" style="width:160px;" value="<?php echo $this->getRequest()->getParam('filter_track_number') ?>" />
+	                </li>
+	            </ul>
+	        </div>
+	    </div>
+		<div class="button-set">
+			<input type="submit" value="search" style="display:none" />
+            <input type="hidden" name="limit" value="<?php echo $this->getRequest()->getParam('limit')?>"/>
+            <?php $paramP = $this->getRequest()->getParam('p'); ?>
+            <input type="hidden" name="p" value="<?php echo ($paramP === '' || $paramP === NULL) ? '1' : $paramP ?>"/>
+	        <button class="button" name="reset_filter" type="button" onclick="setLocation('/pim/shipment/list')" id="filter-search" value="search"><span><?php echo $this->__('Reset Filter') ?></span></button>
+            <button class="button" name="submit_action" type="submit" id="filter-search" value="search"><span><?php echo $this->__('Search') ?></span></button>
+        </div>
+	</fieldset>
+</form>
+<br>
+<fieldset>
+	<?php echo $this->getChildHtml('toolbar') ?>
+    <table cellspacing="0" cellpadding="0" class="data-table">
+        <col width="" />
+        <col width="" />
+		<col width="" />
+        <col width="" />
+        <col width="" />
+        <col width="" />
+        <thead>
+            <tr>
+                <th><?php echo $this->__('Shipment Date')?></th>
+                <th><?php echo $this->__('Shipment Number')?></th>
+                <th><?php echo $this->__('Order Number')?></th>
+                <th><?php echo $this->__('Carrier')?></th>
+                <th><?php echo $this->__('Type')?></th>
+                <th><?php echo $this->__('Tracking')?></th>
+            </tr>
+        </thead>
+        <tbody>
+		<?php foreach ($this->getShipmentCollection() as $shipment): $id = $shipment->getId(); ?>
+			<tr>
+				<td>
+					<?php echo $shipment->getCreatedAt() ?>
+				</td>
+				<td>
+					<a href="<?php echo Mage::getBaseUrl().'pim/shipment/view?id='.$id?>"><?php echo $shipment->getIncrementId() ?></a>
+				</td>
+				<td>
+					<?php echo $shipment->getOrderIncId() ?>
+				</td>
+				<td>
+					<?php echo $shipment->getCarrier() ?>
+				</td>
+				<td>
+					<?php echo $shipment->getTitle() ?>
+				</td>
+				<td>
+					<?php echo $shipment->getTracknum() ?>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php echo $this->getChildHtml('toolbar') ?>
+</fieldset>
+
+<script type="text/javascript">
+jQuery(function() {
+	jQuery('.show_button').on('click',function() {
+		if(jQuery('#form-filter-product').css('display') == 'block') {
+			jQuery('#form-filter-product').slideUp('fast');
+			jQuery('.show_button').text('Show Filter');
+		} else {
+			jQuery('#form-filter-product').slideDown('fast');
+			jQuery('.show_button').text('Hide Filter');
+		}
+
+	});
+});
+</script>

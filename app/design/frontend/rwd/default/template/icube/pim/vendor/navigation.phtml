@@ -1,0 +1,44 @@
+<nav id="nav">
+    <ol class="nav-primary">
+	    <li class="level0 nav-1 first parent">
+	        <a href="/pim/vendor/" class="level0 "><?php echo $this->__('Dashboard') ?></a>
+	    </li>
+        <li class="level0 nav-2">
+        	<a href="#" class="level0 has-children"><?php echo $this->__('Product Catalog') ?></a>
+        	<ul class="level0">
+		        <li class="level1">
+		        	<a class="level1" href="/pim/product/upload"><?php echo $this->__('Product Upload') ?></a>
+		        </li>
+		        <li class="level1">
+		        	<a href="/pim/product/updateprice" class="level1 "><?php echo $this->__('Update Price') ?></a>
+		        </li>
+		        <li class="level1">
+		        	<a href="/pim/product/updatestock" class="level1 "><?php echo $this->__('Update Stock') ?></a>
+		        </li>
+		        <li class="level1">
+                    <a href="/pim/product/updateimage" class="level1 "><?php echo $this->__('Update Image') ?></a>
+                </li>
+		        <li class="level1 last">
+		        	<a href="/pim/product/list" class="level1 "><?php echo $this->__('Product List') ?></a>
+		        </li>
+	        </ul>
+	    </li>
+		<li class="level0 nav-3">
+	        <a href="#" class="level0 "><?php echo $this->__('Order') ?></a>
+	        <ul class="level0">
+		        <li class="level1">
+		        	<a class="level1" href="/pim/order/list"><?php echo $this->__('Open Orders') ?></a>
+		        </li>
+		        <li class="level1">
+		        	<a href="/pim/shipment/list" class="level1 "><?php echo $this->__('Shipments') ?></a>
+		        </li>
+	        </ul>
+	    </li>
+	    <li class="level0 nav-4">
+	        <a href="#" class="level0 "><?php echo $this->__('Report') ?></a>
+	    </li>
+	    <li class="level0 nav-5 last">
+	        <a href="/pim/vendor/password" class="level0 "><?php echo $this->__('Change Password') ?></a>
+	    </li>
+	</ol>
+</nav>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Peexl_CombinedProduct>
+            <version>0.1.0</version>
+        </Peexl_CombinedProduct>
+    </modules>
+    <global>        
+        <models>
+            <peexl_combinedproduct>            
+                <class>Peexl_CombinedProduct_Model</class>
+            </peexl_combinedproduct>                
+        </models>  
+        <helpers>
+            <peexl_combinedproduct>
+                <class>Peexl_CombinedProduct_Helper</class>
+            </peexl_combinedproduct>
+        </helpers>  
+        <catalog>
+            <product>
+                <type>
+                    <combinedproduct translate="label" module="peexl_combinedproduct">
+                        <label>Combined Product</label>
+                        <model>peexl_combinedproduct/product_type</model>
+                        <price_model>peexl_combinedproduct/product_type_price</price_model>
+                        <index_data_retreiver>peexl_combinedproduct/catalogindex_data_combinedproduct</index_data_retreiver>                        
+                        <is_qty>1</is_qty>
+                        <allow_product_types>
+                            <simple/>
+                            <virtual/>                           
+                        </allow_product_types>
+                        <allowed_selection_types>
+                            <simple/>
+                            <virtual/>
+                        </allowed_selection_types>
+                        <composite>1</composite>
+                    </combinedproduct>
+                </type>
+            </product>
+        </catalog>
+        
+        <adminhtml_catalog_product_combinedproduct>
+            <reference name="product_tabs">
+                <action method="addTab">
+                    <name>combinedproducts</name>
+                    <block>peexl_combinedproduct/adminhtml_catalog_product_edit_tab_combinedproducts</block>
+                </action>
+            </reference>
+        </adminhtml_catalog_product_combinedproduct>
+        
+        <resources>
+            <combinedproduct_setup>
+                <setup>
+                    <module>Peexl_CombinedProduct</module>
+                    <class>Mage_Catalog_Model_Resource_Eav_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </combinedproduct_setup>
+            <combinedproduct_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </combinedproduct_write>
+            <combinedproduct_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </combinedproduct_read>
+        </resources>
+        
+    </global>
+</config>

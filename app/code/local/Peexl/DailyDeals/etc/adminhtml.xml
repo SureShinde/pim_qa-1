@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Peexl Modules</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <peexl translate="title">
+                                        <title>Peexl - All</title>
+                                        <sort_order>100</sort_order>
+                                    </peexl>
+                                    <dailydeals>
+                                        <title>Peexl - Dailydeals</title>
+                                        <sort_order>200</sort_order>
+                                    </dailydeals>    
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu> 
+        <peexl_dailydeals_menu translate="title" >
+            <title>Daily Deals</title>
+            <sort_order>50</sort_order>             
+            <children>
+                <peexl_dailydeals_deals>
+                    <title>Deals</title>
+                    <action>peexl_dailydeals/adminhtml_dailydeals_deals</action>
+                    <sort_order>9996</sort_order>                
+                </peexl_dailydeals_deals>               
+            </children>
+        </peexl_dailydeals_menu>
+    </menu>
+</config>

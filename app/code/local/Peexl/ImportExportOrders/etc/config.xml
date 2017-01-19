@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   Peexl
+ * @package    Peexl
+ * @copyright  Copyright (c) 2012 Peexl Web Development (http://www.peexl.com)
+ * @license    http://framework.zend.com/license/new-bsd    New BSD License
+ * @version    1.0.5
+ */
+-->
+
+<config>
+    <modules>
+        <Peexl_ImportExportOrders>
+            <version>1.0.8</version>
+        </Peexl_ImportExportOrders>
+    </modules>
+
+    <adminhtml>
+        <menu>
+            <system>
+                <children>
+                    <convert>
+                        <children>
+                            <importexportorders>
+                                <title>Import/Export Orders</title>
+                                <!--<action>importexportorders/adminhtml_importexport/index</action>-->
+                                <sort_order>999</sort_order>
+                                <children>
+                                    <importexportorders_import>
+                                        <title>Import Orders</title>
+                                        <action>importexportorders/adminhtml_importexport/import</action>
+                                        <sort_order>998</sort_order>
+                                    </importexportorders_import>
+                                    <importexportorders_export>
+                                        <title>Export Orders</title>
+                                        <action>importexportorders/adminhtml_importexport/export</action>
+                                        <sort_order>999</sort_order>
+                                    </importexportorders_export>
+                                </children>
+                            </importexportorders>
+                        </children>
+                    </convert>
+                </children>
+            </system>
+        </menu>
+    </adminhtml>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <importexportorders>
+                    <file>importexportorders.xml</file>
+                </importexportorders>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <admin>
+        <routers>
+            <importexportorders>
+                <use>admin</use>
+                <args>
+                    <module>Peexl_ImportExportOrders</module>
+                    <frontName>importexportorders</frontName>
+                </args>
+            </importexportorders>
+        </routers>
+    </admin>
+
+    <global>
+        <models>
+            <importexportorders>
+                <class>Peexl_ImportExportOrders_Model</class>
+            </importexportorders>
+        </models>
+        <blocks>
+            <importexportorders>
+                <class>Peexl_ImportExportOrders_Block</class>
+            </importexportorders>
+        </blocks>
+        <helpers>
+            <importexportorders>
+                <class>Peexl_ImportExportOrders_Helper</class>
+            </importexportorders>
+        </helpers>
+
+    </global>
+
+
+</config>

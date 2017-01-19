@@ -1,0 +1,98 @@
+<?php $_order = $this->getOrder() ?>
+<?php  $_shipment = Mage::registry('current_shipment') ?>
+<h1 class="sub-title"><?php echo $this->__('Shipment #') ?><?php echo $_shipment->getIncrementId(); ?></h1>
+<table class="data-table" id="my-shipment-table-<?php echo $_shipment->getId(); ?>">
+    <col />
+    <col />
+    <col width="1" />
+    <thead>
+        <tr>
+            <th><?php echo $this->__('SKU') ?></th>
+            <th><?php echo $this->__('Product Name') ?></th>
+            <th class="a-center"><span class="nobr"><?php echo $this->__('Qty Shipped') ?></span></th>
+            <th><?php echo $this->__('Price') ?></th>
+        </tr>
+    </thead>
+    <?php $_items = $_shipment->getAllItems(); ?>
+    <?php $_count = count($_items) ?>
+    <?php foreach ($_items as $_item): ?>
+    <?php if ($_item->getOrderItem()->getParentItem()) continue; ?>
+    <tbody>
+        <tr>
+            <td><?php echo $this->escapeHtml($_item->getSku())?></td>
+            <td><?php echo $this->escapeHtml($_item->getName())?></td>
+            <td><?php echo $this->escapeHtml($_item->getQty()*1)?></td>
+            <td><?php echo $this->helper('checkout')->formatPrice($_item->getPrice())?></td>
+        </tr>
+    </tbody>
+    <?php endforeach; ?>
+</table>
+<script type="text/javascript">decorateTable('my-shipment-table-<?php echo $_shipment->getId(); ?>', {'tbody' : ['odd', 'even'], 'tbody tr' : ['first', 'last']})</script>
+<?php echo $this->getCommentsHtml($_shipment)?>
+<br /><br />
+<?php $tracks = $_shipment->getTracksCollection(); ?>
+<?php  if ($tracks->count()): ?>
+    <table class="data-table tracking-table linearize-table" id="my-tracking-table-<?php echo $_shipment->getId(); ?>">
+        <thead>
+            <th class="label"><?php echo $this->__('Carrier:') ?></th>
+            <th class="label"><?php echo $this->__('Service:') ?></th>
+            <th class="label"><?php echo $this->__('Tracking Number:') ?></th>
+            <th class="label"><?php echo $this->__('Action') ?></th>
+        </thead>
+        <tbody>
+            <tr>
+                <?php foreach($tracks as $track): ?>
+                <td><?php echo $this->escapeHtml($track->getCarrierCode())?></td>
+                <td><?php echo $this->escapeHtml($track->getTitle())?></td>
+                <td>&nbsp;
+                    <?php echo $this->escapeHtml($track->getNumber()) ?>
+                </td>
+                <td class="last"><button type="submit" id="shipment_edit_button" title="<?php echo $this->__('Edit') ?>" class="button submit" ><span><span><?php echo $this->__('Edit') ?></span></span></button></td>
+                <?php endforeach; ?>
+            </tr>
+            <tr id="tracking-form" style="display:none;">
+                <form name="vendor-tracking-form" id="vendor-tracking-form" action="/pim/shipment/editsubmit" method="post" enctype="multipart/form-data">
+                    <td class="form">
+                        <select name="tracking_carrier_code" id="trackingC" class="select carrier" style="width:230px;">
+                            <?php foreach (Mage::helper('pim/tracking')->getCarriers() as $_code=>$_name): ?>
+                            <option <?php if ($track->getCarrierCode() == $_code ) echo 'selected' ;?> value="<?php echo $_code ?>"><?php echo $this->escapeHtml($_name) ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </td>
+                    <td class="form"><input class="input-text number-title" type="text" name="tracking_title" id="trackingT" value="<?php echo $this->__($track->getTitle()) ?>" /></td>
+                    <td class="form"><input class="input-text" type="text" name="tracking_number" id="trackingN" value="<?php echo $this->__($track->getNumber()) ?>" /></td>
+                    <input type="hidden" name="orderid" value="<?php echo $_order->getId() ?>"/>
+                    <input type="hidden" name="trackid" value="<?php echo $track->getEntityId() ?>"/>
+                    <td class="last"><button type="submit" id="shipment_submit_button" title="<?php echo $this->__('Submit') ?>" class="button submit" ><span><span><?php echo $this->__('Submit') ?></span></span></button></td>
+                </form>
+            </tr>
+        </tbody>
+    </table>
+    <script type="text/javascript">decorateTable('my-tracking-table-<?php echo $_shipment->getId(); ?>')</script>
+<?php  endif; ?>
+<div class="buttons-set">
+	<button type="button" id="shipment_back_button" title="<?php echo $this->__('Back') ?>" class="button submit" onclick="location.href='/pim/shipment/list'" ><span><span><?php echo $this->__('Back') ?></span></span></button>
+</div>
+<script type="text/javascript">
+    jQuery(function() {
+        jQuery("#trackingC").change(function(){
+            if(jQuery("#trackingC option:selected").text() == 'Custom Value'){
+                jQuery('#trackingT').val('');
+            }
+            else{
+                jQuery('#trackingT').val(jQuery("#trackingC option:selected").text());
+            }
+            
+        });
+        jQuery('#shipment_edit_button').on('click',function() {
+            if(jQuery('#tracking-form').css('display') == 'table-row') {
+                jQuery('#tracking-form').slideUp('fast');
+                jQuery('#shipment_edit_button').text('Edit');
+            } else {
+                jQuery('#tracking-form').slideDown('fast');
+                jQuery('#shipment_edit_button').text('Cancel');
+            }
+
+        });
+    });
+</script>
